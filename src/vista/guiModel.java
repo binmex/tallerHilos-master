@@ -37,8 +37,12 @@ public class guiModel extends JFrame {
         aceptar2.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                turnoAutorizaciones.setText(envio.getTurno());
                 envio.agregarTurnoAutorizaciones(tldAutorizaciones.getText());
                 panelPrincipal.updateUI();
+                panelPrincipal.invalidate();
+                panelPrincipal.validate();
+                panelPrincipal.repaint();
                 //envio.agregarTurnoCitas(turnoAutorizaciones.getText());
                 //JOptionPane.showMessageDialog(null,"envio exitoso");
                 tldAutorizaciones.setText("");
@@ -50,7 +54,13 @@ public class guiModel extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 System.out.println(tIdCitas.getText());
+                turnoCitas.setText(envio.getTurno2());
+
+                //turnoAutorizaciones.setText(envio.getTurno());
                 envio.agregarTurnoCitas(tIdCitas.getText());
+                panelPrincipal.invalidate();
+                panelPrincipal.validate();
+                panelPrincipal.repaint();
                 panelPrincipal.updateUI();
                 //JOptionPane.showMessageDialog(null, "Registro Actualizado"+ tIdCitas.getText());
                 tIdCitas.setText("");

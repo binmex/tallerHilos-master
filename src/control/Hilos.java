@@ -25,7 +25,7 @@ public class Hilos{
         System.out.println(p.getCode());
         System.out.println(Thread.currentThread().getName());
         try {
-            hilo1.sleep(10000);
+            hilo1.sleep(1000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
@@ -39,12 +39,32 @@ public class Hilos{
         System.out.println(p2.getCode());
 
         try {
-            hilo2.sleep(20000);
+            hilo2.sleep(2000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
         hilo2.asignacioVariable(p2);
         //ListadoTurnos = new DaoTurnos().mostrarTurnos();
+    }
+
+    public String getTurno(){
+        int posicion = hilo1.mostrarTurnos().size();
+        System.out.println(hilo1.mostrarTurnos().size());
+        if (posicion <= 0){
+            return "Esperando Turno";
+        }else {
+            return hilo1.mostrarTurnos().get(posicion-1).getCode();
+        }
+    }
+
+    public String getTurno2(){
+        int posicion2 = hilo2.mostrarTurnos().size();
+        System.out.println(hilo2.mostrarTurnos().size());
+        if (posicion2 <= 0){
+            return "Esperando Turno";
+        }else {
+            return hilo2.mostrarTurnos().get(posicion2-1).getCode();
+        }
     }
     
 
