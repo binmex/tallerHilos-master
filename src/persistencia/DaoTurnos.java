@@ -16,17 +16,13 @@ public class DaoTurnos extends Thread{
      * metodo para agregar datos al archivo plano
      */
     public void asignacioVariable(Turno f){
-        System.out.println(f.getId());
-        System.out.println(f.getCode());
         this.en=f;
-        //guardarTurno();
         run();
     }
     synchronized void guardarTurno() {
         if (en == null){
-            //System.out.println("esta vacio");
         }else {
-            System.out.println("contenido en duardar turno" + en.getId());
+            //System.out.println("contenido en duardar turno" + en.getId());
             new Archivo().AgregarContenido(RUTA, en.getId() + "," + en.getCode());
         }
     }

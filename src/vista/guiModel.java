@@ -37,15 +37,17 @@ public class guiModel extends JFrame {
         aceptar2.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                turnoAutorizaciones.setText(envio.getTurno());
-                envio.agregarTurnoAutorizaciones(tldAutorizaciones.getText());
-                panelPrincipal.updateUI();
-                panelPrincipal.invalidate();
-                panelPrincipal.validate();
-                panelPrincipal.repaint();
-                //envio.agregarTurnoCitas(turnoAutorizaciones.getText());
-                //JOptionPane.showMessageDialog(null,"envio exitoso");
-                tldAutorizaciones.setText("");
+
+                    if (tldAutorizaciones.getText().length()==0){
+                        //JOptionPane.showMessageDialog(null,"esta vacio");
+                        turnoAutorizaciones.setText("No se han asignado Autorizaciones");
+                    }else {
+                        turnoAutorizaciones.setText(envio.getTurno2());
+                        envio.agregarTurnoAutorizaciones(tldAutorizaciones.getText());
+                        tldAutorizaciones.setText("");
+                    }
+
+
             }
         });
         envio.iniciosHilos2();
@@ -53,17 +55,15 @@ public class guiModel extends JFrame {
         aceptarButton1.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                System.out.println(tIdCitas.getText());
-                turnoCitas.setText(envio.getTurno2());
+                if (tIdCitas.getText().length() == 0){
+                    turnoCitas.setText("No se han asignado citas");
+                }else {
+                    turnoCitas.setText(envio.getTurno());
+                    envio.agregarTurnoCitas(tIdCitas.getText());
+                    tIdCitas.setText("");
+                }
 
-                //turnoAutorizaciones.setText(envio.getTurno());
-                envio.agregarTurnoCitas(tIdCitas.getText());
-                panelPrincipal.invalidate();
-                panelPrincipal.validate();
-                panelPrincipal.repaint();
-                panelPrincipal.updateUI();
-                //JOptionPane.showMessageDialog(null, "Registro Actualizado"+ tIdCitas.getText());
-                tIdCitas.setText("");
+
             }
         });
 
